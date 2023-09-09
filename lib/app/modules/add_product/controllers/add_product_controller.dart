@@ -6,24 +6,34 @@ class AddProductController extends GetxController {
   //TODO: Implement AddProductController
 
   late TextEditingController cNama;
-  late TextEditingController cHarga;
+  late TextEditingController cNpm;
+  late TextEditingController cJk;
+  late TextEditingController cProdi;
+  late TextEditingController cAlamat;
 
   FirebaseFirestore firestore = FirebaseFirestore.instance;
 
-  void addProduct(String nama, String harga) async {
-    CollectionReference product = firestore.collection("products");
+  void addProduct(String nama, String npm, String jenis_kelamin, String prodi, String alamat) async {
+    CollectionReference product = firestore.collection("mahasiswa");
 
     try{
       await product.add({
-        "name": nama,
-        "price": harga,
+        "nama": nama,
+        "npm": npm,
+        "jk" : jenis_kelamin,
+        "program_studi": prodi,
+        "alamat": alamat,
+
       });
       Get.defaultDialog(
         title: "Berhasil",
-        middleText: "Berhsil menyimpan data produk",
+        middleText: "Berhasil menyimpan data produk",
         onConfirm: () {
           cNama.clear();
-          cHarga.clear();
+          cNpm.clear();
+          cJk.clear();
+          cProdi.clear();
+          cAlamat.clear();
           Get.back();
           Get.back();
           textConfirm: "OK";
@@ -38,7 +48,10 @@ class AddProductController extends GetxController {
   void onInit() {
     // TODO: implement onInit
     cNama = TextEditingController();
-    cHarga = TextEditingController();
+    cNpm = TextEditingController();
+    cJk = TextEditingController();
+    cProdi = TextEditingController();
+    cAlamat = TextEditingController();
     super.onInit();
   }
 
@@ -46,7 +59,10 @@ class AddProductController extends GetxController {
   void onClose() {
     // TODO: implement onClose
     cNama.dispose();
-    cHarga.dispose();
+    cNpm.dispose();
+    cJk.dispose();
+    cProdi.dispose();
+    cAlamat.dispose();
     super.onClose();
   }
 

@@ -10,7 +10,7 @@ class AddProductView extends GetView<AddProductController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Tambah Product'),
+        title: const Text('Tambah Data Mahasiswa'),
         centerTitle: true,
       ),
       body: Padding(
@@ -21,16 +21,39 @@ class AddProductView extends GetView<AddProductController> {
               controller: controller.cNama,
               autocorrect: false,
               textInputAction: TextInputAction.next,
-              decoration: InputDecoration(labelText: "Nama Produk"),
+              decoration: InputDecoration(labelText: "Nama Mahasiswa"),
             ),
             SizedBox(
               height: 10,
             ),
             TextField(
-              controller: controller.cHarga,
+              controller: controller.cNpm,
               textInputAction: TextInputAction.done,
-              keyboardType: TextInputType.number,
-              decoration: InputDecoration(labelText: "Harga Produk"),
+              decoration: InputDecoration(labelText: "NPM"),
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            TextField(
+              controller: controller.cJk,
+              textInputAction: TextInputAction.done,
+              decoration: InputDecoration(labelText: "Jenis kelamin"),
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            TextField(
+              controller: controller.cProdi,
+              textInputAction: TextInputAction.done,
+              decoration: InputDecoration(labelText: "Program Studi"),
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            TextField(
+              controller: controller.cAlamat,
+              textInputAction: TextInputAction.done,
+              decoration: InputDecoration(labelText: "Alamat"),
             ),
             SizedBox(
               height: 20,
@@ -38,7 +61,10 @@ class AddProductView extends GetView<AddProductController> {
             ElevatedButton(
               onPressed: () => controller.addProduct(
                 controller.cNama.text,
-                controller.cHarga.text,
+                controller.cNpm.text,
+                controller.cJk.text,
+                controller.cProdi.text,
+                controller.cAlamat.text,
               ), 
               child: Text("Simpan")),
           ],
