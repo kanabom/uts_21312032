@@ -19,6 +19,7 @@ class LoginView extends GetView<LoginController> {
         padding: EdgeInsets.all(10),
         child: ListView(
           children: [
+            new Image(image: AssetImage("assets/UNIVERSITASTEKNOKRAT.jpg")),
             SizedBox(
               height: 20,
             ),
